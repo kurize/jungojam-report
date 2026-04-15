@@ -236,27 +236,45 @@ y1:{beginAtZero:true,position:'right',title:{display:true,text:'中位互动量'
 • <b>OC创作</b>：152条是最大样本赛道，中位30、爆款率5.9%——基本盘稳但天花板中等（max=629）。提升方向是从纯穿搭展示向OC剧情/短篇转型（OC剧情中位145 vs OC穿搭中位28）。
 </div>
 
-<h4>各赛道月度趋势</h4>
-<p>基于运营汇总表的发布日期匹配，绘制4个主要赛道的月度中位互动量变化（仅展示月样本≥2的数据点）。</p>
-<div class="chart-wrap" style="height:340px"><canvas id="c_track_trends"></canvas></div>
+<h4>各赛道月度趋势（分平台）</h4>
+<p>基于运营汇总表的发布日期匹配，分平台绘制主要赛道的月度中位互动量变化（仅展示月样本≥2的数据点）。</p>
+<div class="grid-2">
+<div class="chart-wrap" style="height:300px"><canvas id="c_trend_xhs"></canvas></div>
+<div class="chart-wrap" style="height:300px"><canvas id="c_trend_dy"></canvas></div>
+</div>
 <script>
-new Chart(document.getElementById('c_track_trends'),{type:'line',
+new Chart(document.getElementById('c_trend_xhs'),{type:'line',
 data:{labels:['25-08','25-09','25-10','25-11','25-12','26-01','26-02','26-03'],
 datasets:[
-{label:'二次元翻拍',data:[32,39,28,39,30,19,48,25],borderColor:'#3b82f6',backgroundColor:'#3b82f6',pointRadius:5,tension:0.3,spanGaps:true},
-{label:'OC创作',data:[28,51,36,29,22,31,3,20],borderColor:'#8b5cf6',backgroundColor:'#8b5cf6',pointRadius:5,tension:0.3,spanGaps:true},
-{label:'经典IP翻拍',data:[null,null,null,null,61,33,37,14],borderColor:'#f59e0b',backgroundColor:'#f59e0b',pointRadius:5,tension:0.3,spanGaps:true},
-{label:'生活短剧',data:[26,36,19,21,20,12,17,18],borderColor:'#6b7280',backgroundColor:'#6b7280',pointRadius:5,tension:0.3,spanGaps:true}
+{label:'二次元翻拍',data:[32,39,28,32,26,26,123,34],borderColor:'#3b82f6',backgroundColor:'#3b82f6',pointRadius:5,tension:0.3,spanGaps:true},
+{label:'OC创作',data:[28,51,36,29,38,34,null,null],borderColor:'#8b5cf6',backgroundColor:'#8b5cf6',pointRadius:5,tension:0.3,spanGaps:true},
+{label:'经典IP翻拍',data:[null,null,null,null,34,37,37,14],borderColor:'#f59e0b',backgroundColor:'#f59e0b',pointRadius:5,tension:0.3,spanGaps:true},
+{label:'生活短剧',data:[26,36,19,21,20,19,21,31],borderColor:'#6b7280',backgroundColor:'#6b7280',pointRadius:5,tension:0.3,spanGaps:true}
 ]},
-options:{responsive:true,maintainAspectRatio:false,plugins:{title:{display:true,text:'主要赛道月度中位互动量趋势（矩阵号，排除官号）',font:{size:13}}},scales:{y:{beginAtZero:true,title:{display:true,text:'中位互动量'}}}}
+options:{responsive:true,maintainAspectRatio:false,plugins:{title:{display:true,text:'小红书 — 赛道月度趋势',font:{size:13}}},scales:{y:{beginAtZero:true,title:{display:true,text:'中位互动量'}}}}
+});
+new Chart(document.getElementById('c_trend_dy'),{type:'line',
+data:{labels:['25-08','25-09','25-10','25-11','25-12','26-01','26-02','26-03'],
+datasets:[
+{label:'二次元翻拍',data:[null,null,null,142,122,6,24,16],borderColor:'#3b82f6',backgroundColor:'#3b82f6',pointRadius:5,tension:0.3,spanGaps:true},
+{label:'经典IP翻拍',data:[null,null,null,null,96,29,68,11],borderColor:'#f59e0b',backgroundColor:'#f59e0b',pointRadius:5,tension:0.3,spanGaps:true},
+{label:'生活短剧',data:[null,null,null,null,null,6,6,6],borderColor:'#6b7280',backgroundColor:'#6b7280',pointRadius:5,tension:0.3,spanGaps:true}
+]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{title:{display:true,text:'抖音 — 赛道月度趋势',font:{size:13}}},scales:{y:{beginAtZero:true,title:{display:true,text:'中位互动量'}}}}
 });
 </script>
 <div class="insight insight-finding">
-<b>赛道趋势解读</b>：<br>
-• <b>二次元翻拍（蓝线）</b>：整体在25-40区间波动，2026-01降到19后2月反弹至48——波动大但没有持续下行趋势，说明赛道本身未衰退，表现取决于当月是否有高质量IP选择。<br>
-• <b>OC创作（紫线）</b>：2025-09达到高点51后逐步下降，2026-02跌至谷底3——<b>下降趋势最明显</b>，可能与内容同质化有关（大量穿搭展示型OC拉低中位）。3月回升到20但未恢复到前期水平。<br>
-• <b>经典IP翻拍（黄线）</b>：12月以61起步后连续3个月下降至14——<b>快速衰减</b>，与甄嬛传名场面消耗的结论一致。需要引入新IP来对抗衰减。<br>
-• <b>生活短剧（灰线）</b>：最稳定但水平最低，全程在12-36之间窄幅波动——<b>"稳定地平庸"</b>，基本盘有但天花板低。
+<b>分平台趋势解读</b>：<br>
+<b>小红书（左图）</b>：<br>
+• <b>二次元翻拍</b>：7个月稳定在26-39区间，2月异常飙升至123后3月回落到34——2月高点可能与特定爆款视频有关而非趋势性上升。整体<b>最稳定的赛道</b>。<br>
+• <b>OC创作</b>：9月达到51的高点后波动，但12-1月仍有34-38的水平。2-3月数据点不足无法判断，<b>需持续监控</b>。<br>
+• <b>经典IP翻拍</b>：12月-2月稳定在34-37，但3月骤降到14——<b>与名场面消耗的结论一致</b>。<br>
+• <b>生活短剧</b>：8个月稳定在19-36之间，是<b>波动最小的赛道</b>，但绝对水平不高。<br><br>
+<b>抖音（右图）</b>：<br>
+• <b>二次元翻拍</b>：11月起步极高（142），可能受到白咪饭"全家同啊"(2,784互动)等爆款拉动，12月122仍高，但1月断崖式跌到6后再未恢复——<b>抖音二次元翻拍的高点不可复制</b>，是个案而非常态。<br>
+• <b>经典IP翻拍</b>：12月96 → 1月29 → 2月68（回弹）→ 3月11——<b>剧烈波动</b>，取决于当月是否选中了好的名场面。<br>
+• <b>生活短剧</b>：连续3个月中位=6——<b>在抖音几乎没有存在感</b>，与小红书（中位19-36）形成鲜明对比。<br>
+• 抖音OC创作因月样本太少（多数月份<2条）未纳入图表——说明矩阵号在抖音做OC的产量本身就不足，无法判断趋势。
 </div>
 <table><thead><tr><th>赛道</th><th>趋势判断</th><th>依据</th><th>建议动作</th></tr></thead><tbody>
 <tr style="background:#f0fdf4"><td><b>二次元翻拍</b></td><td><span class="tag" style="background:#dcfce7;color:#166534">↑ 上升期</span></td><td>抖音互动率4.5%全赛道第一，假发桂持续产出爆款（8,655 / 1,099 / 903），小红书中位39也高于全局</td><td><b>加大投入</b>，聚焦高认知度IP</td></tr>
